@@ -130,3 +130,8 @@ dmypy.json
 
 # Directory
 dev/
+
+
+cart/
+payment/
+account/
