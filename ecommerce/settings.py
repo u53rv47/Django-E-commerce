@@ -13,9 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-print(SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
-
 DEBUG = True
 
 # ALLOWED_HOSTS = ['mywebsite.com', 'www.mywebsite.com', 'localhost', '127.0.0.1', '*']
@@ -41,21 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'store',  # Django app
-
-    'cart',  # Django app
-
-    # 'account',  # Django app
-
-    # 'payment',  # Django app
+    'store',
+    'cart',
+    'account',
+    # 'payment',
 
     'mathfilters',
-
-    # 'crispy_forms',  # Crispy forms
-
+    'crispy_forms',
     # 'storages',
-
-
 ]
 
 # To un-block PayPal popups - NB!
@@ -96,7 +87,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'store.views.categories',  # Updated
+                'store.views.categories',
                 'cart.context_processors.cart',
 
             ],
