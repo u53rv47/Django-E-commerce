@@ -1,48 +1,28 @@
 
 {% extends "./base.html" %}
-
 {% load static %}
-
-
 {% block content %}
-
-
     <!-- Introduction section -->
   
-    <section class="py-4 text-center container">
-
-        <div class="row py-lg-5">
+    <section class="py-0 text-center container">
+        <div class="row py-lg-4">
         
             <div class="col-lg-6 col-md-8 mx-auto">
-                
-
-                <h4> Edenthought... Simplicity at it's finest. </h4>
-
-
-                <br>
-                
-
+                <h4> Edenthought... Simplicity at it's finest. </h4>                
                 <p class="lead text-muted">
-
                 Browse our extensive collection of unique items.
-
                 </p>
-
-
-                <br>
-        
-                {% comment %} <a href="{% url 'register' %}" class="btn btn-primary my-2"> <i class="fa fa-user-plus" aria-hidden="true"></i> &nbsp; Create an account </a> {% endcomment %}
-                <a href="" class="btn btn-primary my-2"> <i class="fa fa-user-plus" aria-hidden="true"></i> &nbsp; Create an account </a>
-                
+                {% if user.is_authenticated %}
+                {% else %}
+                    <br>
+                    <a href="{% url 'my-login' %}" class="btn btn-primary my-2"> <i class="fa fa-user-plus" aria-hidden="true"></i> &nbsp; Sign In / Sign Up </a>
+                {% endif %}
                 
             </div>
         
         </div>
-
     
     </section>
-
-
        <!-- All products section -->
       
        <div class="album py-5 bg-light">
@@ -50,18 +30,13 @@
         <div class="container">
     
           <div class="pb-3 h5"> All products </div>
-
-
           <hr>
-
           <br>
           
-
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
     
             
             {% for product in my_products %}
-
     
               <div class="col">
                 
@@ -89,21 +64,12 @@
               
               </div>
     
-
             {% endfor %}
             
     
           </div>
-
         </div>
       
       </div>
-
-
 {% endblock %}
-
-
-
-
-
 

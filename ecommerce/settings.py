@@ -16,7 +16,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['mywebsite.com', 'www.mywebsite.com', 'localhost', '127.0.0.1', '*']
+ALLOWED_HOSTS = ['mywebsite.com', 'www.mywebsite.com',
+                 'localhost', '127.0.0.1', '*']
 
 ALLOWED_HOSTS = ['*']
 
@@ -38,15 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mathfilters',
+    'crispy_forms',
+    'crispy_bootstrap4',
+    'storages',
 
     'store',
     'cart',
     'account',
-    # 'payment',
-
-    'mathfilters',
-    'crispy_forms',
-    # 'storages',
+    'payment',
 ]
 
 # To un-block PayPal popups - NB!
@@ -128,7 +129,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -171,18 +171,18 @@ EMAIL_USE_TLS = 'True'
 # Be sure to read the guide in the resources folder of this lecture (SETUP THE EMAIL BACKEND)
 
 # - Enter your GMAIL address # The host email that sends password reset emails
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''  # - Enter your app password
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+# - Enter your app password
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 
 # AWS credentials:
-'''
-AWS_ACCESS_KEY_ID = "" # Access Key ID 
-AWS_SECRET_ACCESS_KEY = "" # Secret Access Key ID
+"""
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID') # Access Key ID
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY') # Secret Access Key ID
 
 # S3 configuration settings:
-
-AWS_STORAGE_BUCKET_NAME = '' 
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME') # Bucket name
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -190,11 +190,10 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 AWS_S3_FILE_OVERWRITE = False
-'''
+"""
 
 
 # Admin styling adjustment
-
 # ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 
@@ -202,23 +201,13 @@ AWS_S3_FILE_OVERWRITE = False
 
 '''
 DATABASES = {
-
     'default': {
-
         'ENGINE': 'django.db.backends.postgresql',
-
-        'NAME': '',
-
-        'USER': '',
-
-        'PASSWORD': '',
-
-        'HOST': '',
-
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
         'PORT': '5432',
-
-
     }
-
 }
 '''
